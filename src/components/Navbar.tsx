@@ -4,7 +4,26 @@ import { Menu, X, Bell } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
   const location = useLocation();
+
+  // Default person image URL
+  const defaultPersonImage = new URL('../assets/user_avatar.png', import.meta.url).href;
+
+  // Updated notifications list, one without an image
+  const [notifications, setNotifications] = useState([
+    { id: 1, message: 'New message received', read: false, image: '', timestamp: '2025-05-03 10:00 AM' },
+    { id: 2, message: 'Your service request has been approved', read: true, timestamp: '2025-05-03 09:30 AM' }, // No image
+    { id: 3, message: 'Reminder: Meeting at 3 PM today', read: false, image: '', timestamp: '2025-05-03 08:45 AM' },
+  ]);
+
+  // Function to mark all notifications as read
+  const markAllAsRead = () => {
+    setNotifications(notifications.map(notification => ({
+      ...notification,
+      read: true
+    })));
+  };
 
   const linkClass = (path: string) =>
     location.pathname === path
@@ -26,7 +45,7 @@ const Navbar = () => {
               TimeTap
             </span>
           </div>
-
+          
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <NavLink to="/" className={linkClass('/')}>Home</NavLink>
@@ -34,8 +53,48 @@ const Navbar = () => {
             <NavLink to="/about" className={linkClass('/about')}>About</NavLink>
             <NavLink to="/contact" className={linkClass('/contact')}>Contact</NavLink>
 
-            <button className="p-2 rounded-full hover:bg-gray-100">
+            {/* Notification Icon */}
+            <button
+              className="p-2 rounded-full hover:bg-gray-100 relative"
+              onClick={() => setNotificationsOpen(!notificationsOpen)}
+            >
               <Bell className="w-6 h-6 text-gray-600" />
+              {notificationsOpen && (
+                <div className="absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg p-4 border border-gray-200">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold text-lg text-gray-800">Notifications</h3>
+                    <button
+                      onClick={markAllAsRead}
+                      className="text-sm text-purple-600 hover:text-purple-800 transition duration-150"
+                    >
+                      Mark all as read
+                    </button>
+                  </div>
+                  {/* Scrollable notifications list */}
+                  <ul className="max-h-64 overflow-y-auto space-y-3">
+                    {notifications.map((notification) => (
+                      <li
+                        key={notification.id}
+                        className={`p-3 rounded-lg transition duration-150 flex items-start space-x-3 ${
+                          notification.read
+                            ? 'bg-gray-100 text-gray-500'
+                            : 'bg-purple-50 text-gray-800 font-semibold'
+                        } hover:bg-purple-100`}
+                      >
+                        <img
+                          src={notification.image || defaultPersonImage}
+                          alt="Notification icon"
+                          className="w-10 h-10 rounded-full object-cover"
+                        />
+                        <div className="flex-1">
+                          <p>{notification.message}</p>
+                          <p className="text-xs text-gray-400 mt-1">{notification.timestamp}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </button>
 
             {/* Styled Login button (last) */}
@@ -96,8 +155,6 @@ const Navbar = () => {
 
             {/* Bottom section with Contact icon and Login */}
             <div className="p-6 border-t border-gray-200 space-y-4">
-              
-
               <NavLink
                 to="/login"
                 className="block w-full text-center py-2 px-4 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition"
