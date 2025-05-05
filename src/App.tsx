@@ -10,8 +10,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginForm />} />
-        {/* <Route path="/login" element={<ShopPage />} /> */}
+        {/* <Route path="/login" element={<LoginForm />} /> */}
+        <Route path="/login" element={<ShopPage />} />
         {/* Add more routes here if needed */}
       </Routes>
     </Router>
