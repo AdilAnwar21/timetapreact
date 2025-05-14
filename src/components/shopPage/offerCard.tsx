@@ -8,14 +8,16 @@ interface OfferCardProps {
 }
 
 const OfferCard: React.FC<OfferCardProps> = ({ title, price, imageUrl }) => {
+
+  
   return (
-    <div className="min-w-[200px] p-2 m-2 bg-white rounded-xl shadow-md flex flex-col justify-between">
+    <div className="min-w-[200px] p-2 m-2 bg-white rounded-xl shadow-md flex flex-col justify-between" >
       <img
         src={imageUrl}
         alt={title}
         className="rounded-xl h-[120px] object-cover"
       />
-      <div className="pt-2">
+      <div className="pt-2" >
         <h3 className="text-md font-medium">{title}</h3>
         <p className="text-sm text-gray-500">2 Hours</p>
         <p className="text-lg font-bold mt-1">₹{price}</p>

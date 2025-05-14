@@ -4,14 +4,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import LoginForm from './pages/Login';
 import ShopPage from './pages/ShopPage';
+import ServiceDetails from './pages/Service';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        {/* <Route path="/login" element={<LoginForm />} /> */}
-        <Route path="/login" element={<ShopPage />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/shop/:id" element={<ShopPage />} />
+        <Route path="/service/:id" element={<ServiceDetails />} />
         {/* Add more routes here if needed */}
       </Routes>
     </Router>
