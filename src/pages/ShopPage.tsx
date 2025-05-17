@@ -139,31 +139,31 @@ const SalonHeader: React.FC = () => {
       </div>
       
       <div className="grid grid-cols-4 bg-white border-t border-gray-100">
-        <button className="flex flex-col items-center justify-center py-2">
-          <div className="bg-gray-100 rounded-full p-2 mb-1">
-            <Phone className="w-4 h-4 text-gray-700" />
-          </div>
-          <span className="text-xs text-gray-600">Call</span>
-        </button>
-        <button className="flex flex-col items-center justify-center py-2">
-          <div className="bg-gray-100 rounded-full p-2 mb-1">
-            <MessageCircle className="w-4 h-4 text-gray-700" />
-          </div>
-          <span className="text-xs text-gray-600">Message</span>
-        </button>
-        <button className="flex flex-col items-center justify-center py-2">
-          <div className="bg-gray-100 rounded-full p-2 mb-1">
-            <MapPin className="w-4 h-4 text-gray-700" />
-          </div>
-          <span className="text-xs text-gray-600">Direction</span>
-        </button>
-        <button className="flex flex-col items-center justify-center py-2">
-          <div className="bg-gray-100 rounded-full p-2 mb-1">
-            <Star className="w-4 h-4 text-gray-700" />
-          </div>
-          <span className="text-xs text-gray-600">Rate Us</span>
-        </button>
-      </div>
+      <button className="flex flex-col items-center justify-center py-2 mt-5">
+        <div className="bg-red-100 rounded-full p-2 mb-1">
+          <Phone className="w-4 h-4 text-red-500" />
+        </div>
+        <span className="text-xs text-gray-600">Call</span>
+      </button>
+      <button className="flex flex-col items-center justify-center py-2 mt-5">
+        <div className="bg-red-100 rounded-full p-2 mb-1">
+          <MessageCircle className="w-4 h-4 text-red-500" />
+        </div>
+        <span className="text-xs text-gray-600">Message</span>
+      </button>
+      <button className="flex flex-col items-center justify-center py-2 mt-5">
+        <div className="bg-red-100 rounded-full p-2 mb-1">
+          <MapPin className="w-4 h-4 text-red-500" />
+        </div>
+        <span className="text-xs text-gray-600">Direction</span>
+      </button>
+      <button className="flex flex-col items-center justify-center py-2 mt-5">
+        <div className="bg-red-100 rounded-full p-2 mb-1">
+          <Star className="w-4 h-4 text-red-500" />
+        </div>
+        <span className="text-xs text-gray-600">Rate Us</span>
+      </button>
+    </div>
     </div>
   );
 };
