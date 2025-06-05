@@ -14,7 +14,7 @@ const ShopCards: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=150&q=80',
       discount: '20% off',
       rating: 4.5,
-      name: 'SHOP NAME',
+      name: 'Itachi Barbers',
       services: 'Hair Cutting, Hair Spa, Facial, Hair Coloring.....',
       location: 'PALAZHI, Calicut',
       distance: '1.75 km',
@@ -27,7 +27,7 @@ const ShopCards: React.FC = () => {
       image: 'https://images.unsplash.com/photo-1516972810927-80185027ca84?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=150&q=80',
       discount: '20% off',
       rating: 4.5,
-      name: 'SHOP NAME',
+      name: 'Jiraya',
       services: 'Hair Cutting, Hair Spa, Facial, Hair Coloring.....',
       location: 'PALAZHI, Calicut',
       distance: '1.75 km',
@@ -40,7 +40,7 @@ const ShopCards: React.FC = () => {
         image: 'https://images.unsplash.com/photo-1516972810927-80185027ca84?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=150&q=80',
         discount: '20% off',
         rating: 4.5,
-        name: 'SHOP NAME',
+        name: 'Big Mom Saloon',
         services: 'Hair Cutting, Hair Spa, Facial, Hair Coloring.....',
         location: 'PALAZHI, Calicut',
         distance: '1.75 km',
@@ -53,7 +53,7 @@ const ShopCards: React.FC = () => {
         image: 'https://images.unsplash.com/photo-1516972810927-80185027ca84?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=150&q=80',
         discount: '20% off',
         rating: 4.5,
-        name: 'SHOP NAME',
+        name: 'Zoro Groomings',
         services: 'Hair Cutting, Hair Spa, Facial, Hair Coloring.....',
         location: 'PALAZHI, Calicut',
         distance: '1.75 km',
@@ -91,10 +91,10 @@ const ShopCards: React.FC = () => {
                 </div>
               </div>
               <div className="p-5">
-                <div className="flex items-center mb-3">
+                {/* <div className="flex items-center mb-3">
                   <span className="text-blue-600 mr-2">✔</span>
                   <span className="text-blue-600 text-sm font-medium">VERIFY SEAL</span>
-                </div>
+                </div> */}
                 <div className="flex justify-between items-center mb-2">
                   <h2 className="text-xl font-semibold text-gray-800 tracking-tight">{shop.name}</h2>
                   <span
