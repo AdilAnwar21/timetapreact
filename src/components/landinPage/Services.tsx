@@ -115,7 +115,7 @@ const ServiceCarousel: React.FC = () => {
                             <div
                                 key={idx}
                                 className="flex-shrink-0 flex flex-col items-center justify-center 
-                            bg-red-100 rounded-none 
+                            bg-red-100 rounded-xl 
                             w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 
                             text-center transition hover:scale-105"
                             >

@@ -5,7 +5,7 @@ const ShopCards: React.FC = () => {
   const navigate = useNavigate();
 
   const handleClick = (id: number) => {
-    navigate(`/shop/${id}`);
+    navigate(`/shop/${id}`); // Navigate to shops/:id
   };
 
   

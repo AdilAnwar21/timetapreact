@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Bell } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ is_authenticated = false, user = { name: 'User', image: '' } }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const location = useLocation();
@@ -13,7 +13,7 @@ const Navbar = () => {
   // Updated notifications list, one without an image
   const [notifications, setNotifications] = useState([
     { id: 1, message: 'New message received', read: false, image: '', timestamp: '2025-05-03 10:00 AM' },
-    { id: 2, message: 'Your service request has been approved', read: true, timestamp: '2025-05-03 09:30 AM' }, // No image
+    { id: 2, message: 'Your service request has been approved', read: true, timestamp: '2025-05-03 09:30 AM' },
     { id: 3, message: 'Reminder: Meeting at 3 PM today', read: false, image: '', timestamp: '2025-05-03 08:45 AM' },
   ]);
 
@@ -25,12 +25,13 @@ const Navbar = () => {
     })));
   };
 
-  const linkClass = (path: string) =>
+  
+  const linkClass = (path:any) =>
     location.pathname === path
       ? 'text-purple-600 font-semibold'
       : 'text-gray-700 hover:text-purple-600';
 
-  const mobileLinkClass = (path: string) =>
+  const mobileLinkClass = (path:any) =>
     location.pathname === path
       ? 'block py-2.5 px-4 rounded-lg text-purple-600 font-semibold bg-purple-50'
       : 'block py-2.5 px-4 rounded-lg text-gray-700 hover:bg-purple-50 hover:text-purple-600';
@@ -70,7 +71,6 @@ const Navbar = () => {
                       Mark all as read
                     </button>
                   </div>
-                  {/* Scrollable notifications list */}
                   <ul className="max-h-64 overflow-y-auto space-y-3">
                     {notifications.map((notification) => (
                       <li
@@ -97,13 +97,23 @@ const Navbar = () => {
               )}
             </button>
 
-            {/* Styled Login button (last) */}
-            <NavLink
-              to="/login"
-              className="px-4 py-1.5 rounded-full border border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition duration-200"
-            >
-              Login
-            </NavLink>
+            {/* Conditional rendering: Profile image or Login button */}
+            {is_authenticated ? (
+              <NavLink to="/settings">
+                <img
+                  src={user.image || defaultPersonImage}
+                  alt="User profile"
+                  className="w-10 h-10 rounded-full object-cover border border-purple-600 hover:border-purple-800 transition duration-200"
+                />
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/login"
+                className="px-4 py-1.5 rounded-full border border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition duration-200"
+              >
+                Login
+              </NavLink>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -153,14 +163,25 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Bottom section with Contact icon and Login */}
+            {/* Bottom section with Profile or Login */}
             <div className="p-6 border-t border-gray-200 space-y-4">
-              <NavLink
-                to="/login"
-                className="block w-full text-center py-2 px-4 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition"
-              >
-                Login
-              </NavLink>
+              {is_authenticated ? (
+                <NavLink to="/settings" className="flex items-center space-x-3">
+                  <img
+                    src={user.image || defaultPersonImage}
+                    alt="User profile"
+                    className="w-10 h-10 rounded-full object-cover border border-purple-600"
+                  />
+                  <span className="text-gray-800 font-semibold">{user.name}</span>
+                </NavLink>
+              ) : (
+                <NavLink
+                  to="/login"
+                  className="block w-full text-center py-2 px-4 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition"
+                >
+                  Login
+                </NavLink>
+              )}
             </div>
           </div>
         </div>

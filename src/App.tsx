@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import LoginForm from './pages/Login';
 import ShopPage from './pages/ShopPage';
 import ServiceDetails from './pages/Service';
+import RegisterForm from './pages/Register';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterForm />} />
         <Route path="/shop/:id" element={<ShopPage />} />
         <Route path="/service/:id" element={<ServiceDetails />} />
         {/* Add more routes here if needed */}
