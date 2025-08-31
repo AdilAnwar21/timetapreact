@@ -1,20 +1,20 @@
+// App.tsx
 // import React from 'react';
-import Navbar from './components/Navbar';
-import Ratings from './components/Ratings';
-import SearchSection from './components/SearchSection';
-import ServicesSection from './components/Services';
-import ShopCards from './components/Shops';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import LoginForm from './pages/Login';
+import ShopPage from './pages/ShopPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <SearchSection />
-      <Ratings></Ratings>
-      <ServicesSection></ServicesSection>
-      <ShopCards></ShopCards>
-      
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        {/* <Route path="/login" element={<LoginForm />} /> */}
+        <Route path="/login" element={<ShopPage />} />
+        {/* Add more routes here if needed */}
+      </Routes>
+    </Router>
   );
 }
 
